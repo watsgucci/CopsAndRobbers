@@ -9,14 +9,22 @@ public class Main {
             "3-1","3-2","3-3","3-4","3-5","3-6","3-7","3-8","3-9","3-10","3-11","3-12","3-13","3-14",
             "5-0","5-1","5-2","5-3","5-4","5-5","5-6","5-7","5-8","5-9","5-10","5-11","5-12","5-13"};
     static ArrayList<String> emptyList = new ArrayList<>(Arrays.asList(empty));
-    static String figure1Str = "0-5"; // user's figure position as String
+    static String figure1Str = "0-0"; // user's figure position as String
+    static String owlStr = "1-3";
+    static String bunyStr = "3-6";
     static int[] figure1Int = {0, 0}; // user's figure position as int
     static int dice = 64; // dice value, will be change once dice thrown
     static String userName = ""; // user's name, is used to welcome user
-    static String[] figure = { // I'll add more figures and make it [][] array
-            "("+Colr.blue+"⊙"+Colr.reset+"‿"+Colr.blue+"⊙"+Colr.reset+") ",
+    static String[][] figure = {
+            {"("+Colr.blue+"⊙"+Colr.reset+"‿"+Colr.blue+"⊙"+Colr.reset+") ",
             ">"+Colr.lightRed+")⧚⧚)"+Colr.reset+"-",
-            Colr.green+"╱╱ ╲╲ "+Colr.reset
+            Colr.green+"╱╱ ╲╲ "+Colr.reset},
+            {"{o,o} ",
+            "./)_) ",
+            "  \" \" "},
+            {"(\\(\\  ",
+            "(-.-) ",
+            "o_()()"},
     };
 
     // *************   End of Global variables
@@ -45,7 +53,9 @@ public class Main {
                 for (int x = 0; x < 15; x++) {
                     if(i==1){count(y, x);}
                     System.out.print(
-                            figure1Str.equals(y+"-"+x)?figure[i]:
+                            figure1Str.equals(y+"-"+x)?figure[0][i]:
+                                    owlStr.equals(y+"-"+x)?figure[1][i]:
+                                            bunyStr.equals(y+"-"+x)?figure[2][i]:
                                     emptyList.contains(y+"-"+x)?"      ":box(i)
                     );
                 }
